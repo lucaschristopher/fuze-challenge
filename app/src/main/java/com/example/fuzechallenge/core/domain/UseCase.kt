@@ -30,7 +30,7 @@ abstract class UseCase<Param, Source> {
          * Default method for a query with no parameters.
          * NOTE: This method does not override the execute() defined in the parent class!
          */
-        abstract fun execute(): Flow<Source>
+        abstract suspend fun execute(): Flow<Source>
 
         /**
          * As this class inherits from UseCase, I am required to implement the execute() method with parameter.
@@ -43,7 +43,7 @@ abstract class UseCase<Param, Source> {
         /**
          * An optimization of the call using "operator"
          */
-        operator fun invoke(): Flow<Source> = execute()
+        suspend operator fun invoke(): Flow<Source> = execute()
     }
 
     /**

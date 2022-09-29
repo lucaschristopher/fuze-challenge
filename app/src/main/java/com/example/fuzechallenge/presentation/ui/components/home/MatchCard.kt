@@ -1,5 +1,6 @@
 package com.example.fuzechallenge.presentation.ui.components.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -9,13 +10,21 @@ import androidx.compose.material.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.example.fuzechallenge.presentation.model.*
+import androidx.navigation.NavHostController
+import com.example.fuzechallenge.core.constants.ARG_MATCH
+import com.example.fuzechallenge.core.util.*
+import com.example.fuzechallenge.presentation.model.MatchUiModel
+import com.example.fuzechallenge.presentation.navigation.Route
 import com.example.fuzechallenge.presentation.theme.*
 
 @Composable
-fun MatchCard(match: MatchUiModel) {
+fun MatchCard(
+    match: MatchUiModel,
+    navController: NavHostController
+) {
     Card(
         backgroundColor = DeepPurple,
         elevation = dp4,
@@ -23,7 +32,13 @@ fun MatchCard(match: MatchUiModel) {
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .padding(dp6),
+            .padding(dp6)
+            .clickable(
+                onClick = {
+                    navController.currentBackStackEntry?.savedStateHandle?.set(ARG_MATCH, match)
+                    navController.navigate(Route.Detail.route)
+                }
+            )
     ) {
         ConstraintLayout {
             val (rowTeamImages, divider, rowInfo, statusBadge) = createRefs()
@@ -32,9 +47,9 @@ fun MatchCard(match: MatchUiModel) {
                 scheduledAt = match.scheduledAt,
                 matchStatus = match.status,
                 modifier = Modifier.constrainAs(statusBadge) {
-                top.linkTo(parent.top)
-                end.linkTo(parent.end)
-            })
+                    top.linkTo(parent.top)
+                    end.linkTo(parent.end)
+                })
 
             RowTeamImages(
                 modifier = Modifier.constrainAs(rowTeamImages) {
@@ -75,53 +90,16 @@ fun MatchCard(match: MatchUiModel) {
 @Preview(showBackground = true)
 @Composable
 fun MatchCardPreview() {
-    val beginAt = ""
-    val status = ""
-    val serie = SerieUiModel(
-        id = 0,
-        name = "Moscow",
-        description = "",
-        slug = "cs-go-epicenter-moscow-2016"
-    )
-    val league = LeagueUiModel(
-        id = 4156,
-        name = "EPICENTER",
-        imageUrl = "https://cdn.pandascore.co/images/league/image/4156/600px-EPICENTER.svg.png",
-        url = "",
-        slug = "cs-go-epicenter"
-    )
-    val opponents = listOf(
-        OpponentUiModel(
-            type = "Time",
-            opponent = TeamUiModel(
-                id = 3288,
-                imageUrl = "https://cdn.pandascore.co/images/team/image/3288/600px_virtus.pro_2019.png",
-                name = "Virtus.pro",
-                slug = "virtus-pro-75b4744b-43d9-4ebd-a8dc-f1e0f9be69b3",
-                location = "RU"
-            )
-        ),
-        OpponentUiModel(
-            type = "Time",
-            opponent = TeamUiModel(
-                id = 3207,
-                imageUrl = "https://cdn.pandascore.co/images/team/image/3207/SK_GAMMING.png",
-                name = "SK",
-                slug = "sk",
-                location = "DE"
-            )
-        )
-    )
-
     FuzeChallengeTheme {
         MatchCard(
             MatchUiModel(
-                scheduledAt = beginAt,
-                status = status,
-                serie = serie,
-                league = league,
-                opponents = opponents
-            )
+                scheduledAt = mockBeginAtPreview,
+                status = mockStatusPreview,
+                serie = mockSeriePreview,
+                league = mockLeaguePreview,
+                opponents = mockOpponentsPreview
+            ),
+            navController = NavHostController(LocalContext.current)
         )
     }
 }

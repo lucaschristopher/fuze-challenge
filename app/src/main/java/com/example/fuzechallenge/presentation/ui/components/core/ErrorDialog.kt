@@ -13,7 +13,9 @@ import com.example.fuzechallenge.presentation.theme.FuzeChallengeTheme
 import com.example.fuzechallenge.presentation.theme.RedFuze
 
 @Composable
-fun ErrorDialog() {
+fun ErrorDialog(
+    onClick: () -> Unit = {}
+) {
     val openDialog = remember { mutableStateOf(true) }
 
     if (openDialog.value) {
@@ -29,6 +31,7 @@ fun ErrorDialog() {
             },
             confirmButton = {
                 TextButton(onClick = {
+                    onClick()
                     openDialog.value = false
                 }) {
                     Text(

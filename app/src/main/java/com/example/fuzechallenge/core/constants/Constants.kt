@@ -12,7 +12,7 @@ const val DEFAULT_ERROR = "Ocorreu um erro, por favor, tente mais tarde."
 // Screens
 const val HOME_SCREEN = "home"
 const val DETAIL_SCREEN = "detail"
-const val DETAIL_ARG_MATCH_ID = "matchId"
+const val ARG_MATCH = "match"
 
 // Utils
 const val EMPTY_STRING = ""
@@ -30,7 +30,7 @@ const val COUNTRY = "pt-Br"
 const val INITIAL_PAGE: Int = 1
 const val PAGE_SIZE: Int = 20
 const val DEFAULT_ID: Long = 0
-const val OPPONENTS_QUANTITY: Int = 2
+const val FULL_OPPONENTS_QUANTITY: Int = 2
 const val CANVA_DIVISOR: Int = 2
 
 // Interceptor

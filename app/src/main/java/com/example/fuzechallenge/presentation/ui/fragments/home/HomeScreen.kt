@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavHostController
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
@@ -21,8 +22,8 @@ import com.example.fuzechallenge.presentation.ui.components.home.MatchCard
 
 @Composable
 fun HomeScreen(
-    onClickToDetailScreen: (Int) -> Unit = {},
-    matches: LazyPagingItems<MatchUiModel>,
+    navController: NavHostController,
+    matches: LazyPagingItems<MatchUiModel>
 ) {
     val context = LocalContext.current
 
@@ -32,7 +33,12 @@ fun HomeScreen(
             .padding(all = dp16),
     ) {
         items(items = matches) { item ->
-            item?.let { MatchCard(match = it) }
+            item?.let {
+                MatchCard(
+                    match = it,
+                    navController = navController
+                )
+            }
         }
 
         when (matches.loadState.append) {
@@ -49,7 +55,9 @@ fun HomeScreen(
     matches.apply {
         when (loadState.refresh) {
             is LoadState.Loading -> LoadingComponent()
-            is LoadState.Error -> ErrorDialog()
+            is LoadState.Error -> ErrorDialog(
+                onClick = { retry() }
+            )
             else -> Unit
         }
     }
