@@ -1,4 +1,4 @@
-package com.example.fuzechallenge.ui.theme
+package com.example.fuzechallenge.presentation.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
