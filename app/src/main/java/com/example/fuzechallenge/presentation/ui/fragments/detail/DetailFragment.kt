@@ -1,9 +1,6 @@
 package com.example.fuzechallenge.presentation.ui.fragments.detail
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -79,7 +76,10 @@ fun DetailFragment(
                 RowTeamImages(match = it)
                 MatchTime(it)
                 if (viewModel.hasFullOpponents) {
-                    Row {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
                         BuildFirstTeamPlayerList(viewModel)
                         BuildSecondTeamPlayerList(viewModel)
                     }
@@ -102,7 +102,7 @@ fun DetailFragment(
 private fun BuildFirstTeamPlayerList(viewModel: DetailViewModel) {
     when (val state = viewModel.firstGangDetail.collectAsState().value) {
         is ViewState.Loading -> LoadingComponent()
-        is ViewState.Success -> TeamList(state.data)
+        is ViewState.Success -> TeamList(state.data, true)
         is ViewState.Error -> Unit
         else -> Unit
     }
@@ -112,7 +112,7 @@ private fun BuildFirstTeamPlayerList(viewModel: DetailViewModel) {
 private fun BuildSecondTeamPlayerList(viewModel: DetailViewModel) {
     when (val state = viewModel.secondGangDetail.collectAsState().value) {
         is ViewState.Loading -> LoadingComponent()
-        is ViewState.Success -> TeamList(state.data)
+        is ViewState.Success -> TeamList(state.data, false)
         is ViewState.Error -> Unit
         else -> Unit
     }
