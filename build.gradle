@@ -15,6 +15,8 @@ buildscript {
         coil_version = '2.2.1'
         gson_version = '2.9.1'
         paging_version = '1.0.0-alpha16'
+        arch_core_version = '2.1.0'
+        coroutines_version = '1.6.4'
 
         // Tests
         mockk_version = '1.13.1'
