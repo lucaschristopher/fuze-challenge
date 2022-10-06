@@ -1,0 +1,32 @@
+package com.example.fuzechallenge.data.provider
+
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
+import okhttp3.Cache
+
+object NetworkProvider {
+
+    private val context = ContextProvider.currentContext
+
+    fun hasNetwork(): Boolean? {
+        var isConnected: Boolean? = false // Initial Value
+        val connectivityManager =
+            context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
+        if (activeNetwork != null && activeNetwork.isConnected)
+            isConnected = true
+        return isConnected
+    }
+
+    val cache: Cache? by lazy {
+        if (context != null) {
+            Cache(
+                directory = context.cacheDir,
+                maxSize = 100L * 1024L * 1024L // 100 MB
+            )
+        } else {
+            null
+        }
+    }
+}

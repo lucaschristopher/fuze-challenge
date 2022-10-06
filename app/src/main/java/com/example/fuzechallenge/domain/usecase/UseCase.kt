@@ -1,4 +1,4 @@
-package com.example.fuzechallenge.core.domain
+package com.example.fuzechallenge.domain.usecase
 
 import kotlinx.coroutines.flow.Flow
 

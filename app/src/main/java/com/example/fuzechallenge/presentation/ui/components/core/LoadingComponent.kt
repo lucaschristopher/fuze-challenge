@@ -12,9 +12,9 @@ import com.example.fuzechallenge.presentation.theme.FuzeChallengeTheme
 import com.example.fuzechallenge.presentation.theme.RedFuze
 
 @Composable
-fun LoadingComponent() {
+fun LoadingComponent(modifier: Modifier = Modifier) {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
         CircularProgressIndicator(color = RedFuze)

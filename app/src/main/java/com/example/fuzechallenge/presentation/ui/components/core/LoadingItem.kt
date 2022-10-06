@@ -11,15 +11,15 @@ import com.example.fuzechallenge.presentation.theme.dp6
 import com.example.fuzechallenge.presentation.theme.dp8
 
 @Composable
-fun LoadingItem() {
+fun LoadingItem(modifier: Modifier = Modifier) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight(),
         contentAlignment = Alignment.Center
     ) {
         CircularProgressIndicator(
-            modifier = Modifier
+            modifier = modifier
                 .width(dp42)
                 .height(dp42)
                 .padding(dp8),

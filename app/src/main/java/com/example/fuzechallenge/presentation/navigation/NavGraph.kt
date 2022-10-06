@@ -1,6 +1,7 @@
 package com.example.fuzechallenge.presentation.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -11,19 +12,24 @@ import com.example.fuzechallenge.presentation.ui.fragments.home.HomeFragment
 
 @Composable
 fun NavGraph(navController: NavHostController) {
+    val actions = remember(navController) { Actions(navController) }
+
     NavHost(
-        navController = navController, startDestination = Route.Home.route
+        navController = navController,
+        startDestination = Route.Home.route
     ) {
         composable(route = Route.Home.route) {
-            HomeFragment(navController = navController)
+            HomeFragment(
+                openMatchDetail = actions.openMatchDetail
+            )
         }
-        composable(Route.Detail.route) {
-            val result = navController.previousBackStackEntry
+        composable(route = Route.Detail.route) {
+            val match = navController.previousBackStackEntry
                 ?.savedStateHandle?.get<MatchUiModel>(ARG_MATCH)
 
             DetailFragment(
-                navController = navController,
-                match = result
+                navigateBack = actions.navigateBack,
+                match = match
             )
         }
     }

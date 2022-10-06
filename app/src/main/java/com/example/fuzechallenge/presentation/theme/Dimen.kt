@@ -26,6 +26,8 @@ val dp50 = 50.dp
 val dp56 = 56.dp
 val dp60 = 60.dp
 val dp80 = 80.dp
+val dp150 = 150.dp
+val dp179 = 179.dp
 val dp200 = 200.dp
 
 // FontSize

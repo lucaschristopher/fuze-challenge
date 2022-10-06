@@ -2,71 +2,52 @@ package com.example.fuzechallenge.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.fuzechallenge.core.constants.MATCH_MESSAGE_ERROR
+import com.example.fuzechallenge.core.constants.UNIQUE_OPPONENTS_QUANTITY
 import com.example.fuzechallenge.domain.model.detail.Gang
 import com.example.fuzechallenge.domain.model.detail.toUiModel
-import com.example.fuzechallenge.domain.usecase.AppUseCases
+import com.example.fuzechallenge.domain.usecase.GetTeamsInfoUseCase
+import com.example.fuzechallenge.presentation.model.OpponentUiModel
 import com.example.fuzechallenge.presentation.model.detail.GangUiModel
 import com.example.fuzechallenge.presentation.state.ViewState
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class DetailViewModel(
-    private val appUseCases: AppUseCases
+    private val getTeamsInfoUseCase: GetTeamsInfoUseCase
 ) : ViewModel() {
 
-    var hasOpponents = false
-    var hasFullOpponents = false
+    private val _teamsInfo =
+        MutableStateFlow<ViewState<List<GangUiModel>>>(ViewState.Initial)
+    val teamsInfo = _teamsInfo.asStateFlow()
 
-    private val _firstGangDetail = MutableStateFlow<ViewState<GangUiModel>>(ViewState.Initial)
-    val firstGangDetail: StateFlow<ViewState<GangUiModel>>
-        get() = _firstGangDetail
-
-    private val _secondGangDetail = MutableStateFlow<ViewState<GangUiModel>>(ViewState.Initial)
-    val secondGangDetail: StateFlow<ViewState<GangUiModel>>
-        get() = _secondGangDetail
-
-    fun getFirstGangDetail(id: String) {
+    fun getTeamsInfo(opponents: List<OpponentUiModel>?) {
         viewModelScope.launch {
-            appUseCases.getGangByIdUseCase(id)
-                .onStart { handleLoadingFirst() }
-                .catch { handleErrorFirst(it) }
-                .collect { handleSuccessFirst(it) }
+            if (opponents.isNullOrEmpty() || opponents.size == UNIQUE_OPPONENTS_QUANTITY) {
+                _teamsInfo.value = ViewState.Error(Exception(MATCH_MESSAGE_ERROR))
+            } else {
+                getTeamsInfoUseCase(opponents.map { it.opponent.id })
+                    .onStart { handleLoading() }
+                    .catch { handleError(it) }
+                    .collect { handleSuccess(it) }
+            }
         }
     }
 
-    fun getSecondGangDetail(id: String) {
-        viewModelScope.launch {
-            appUseCases.getGangByIdUseCase(id)
-                .onStart { handleLoadingSecond() }
-                .catch { handleErrorSecond(it) }
-                .collect { handleSuccessSecond(it) }
-        }
+    private fun handleLoading() {
+        _teamsInfo.value = ViewState.Loading
     }
 
-    private fun handleLoadingFirst() {
-        _firstGangDetail.value = ViewState.Loading
+    private fun handleError(throwable: Throwable) {
+        _teamsInfo.value = ViewState.Error(throwable)
     }
 
-    private fun handleErrorFirst(throwable: Throwable) {
-        _firstGangDetail.value = ViewState.Error(throwable)
-    }
-
-    private fun handleSuccessFirst(gang: Gang) {
-        _firstGangDetail.value = ViewState.Success(gang.toUiModel())
-    }
-
-    private fun handleLoadingSecond() {
-        _secondGangDetail.value = ViewState.Loading
-    }
-
-    private fun handleErrorSecond(throwable: Throwable) {
-        _secondGangDetail.value = ViewState.Error(throwable)
-    }
-
-    private fun handleSuccessSecond(gang: Gang) {
-        _secondGangDetail.value = ViewState.Success(gang.toUiModel())
+    private fun handleSuccess(gangs: List<Gang>) {
+        _teamsInfo.value = ViewState.Success(
+            gangs.map { it.toUiModel() }
+        )
     }
 }

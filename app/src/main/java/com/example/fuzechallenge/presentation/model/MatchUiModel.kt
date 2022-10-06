@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 class MatchUiModel(
+    val id: Long,
     val scheduledAt: String,
     val status: String,
     val serie: SerieUiModel,

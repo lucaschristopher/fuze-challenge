@@ -1,25 +1,32 @@
 package com.example.fuzechallenge.data.provider
 
-import com.example.fuzechallenge.BuildConfig
-import com.example.fuzechallenge.core.constants.AUTHORIZATION
-import okhttp3.Interceptor
+import com.example.fuzechallenge.core.constants.DEFAULT_TIME_VALUE
+import com.example.fuzechallenge.data.provider.NetworkProvider.cache
+import com.example.fuzechallenge.data.provider.interceptor.OfflineInterceptor
+import com.example.fuzechallenge.data.provider.interceptor.OnlineInterceptor
+import com.example.fuzechallenge.data.provider.interceptor.RequestInterceptor
 import okhttp3.OkHttpClient
-import okhttp3.Response
+import java.util.concurrent.TimeUnit
 
 object OkHttpClientFactory {
 
     fun build(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(RequestInterceptor())
+            .addInterceptor(OfflineInterceptor())
+            .addNetworkInterceptor(OnlineInterceptor())
+            .setupTimeout()
+            .setupCache()
             .build()
     }
-}
 
-internal class RequestInterceptor : Interceptor {
-    override fun intercept(chain: Interceptor.Chain): Response {
-        val builder = chain.request().newBuilder().apply {
-            addHeader(AUTHORIZATION, "Bearer ${BuildConfig.API_KEY}")
-        }
-        return chain.proceed(builder.build())
+    private fun OkHttpClient.Builder.setupTimeout() = apply {
+        readTimeout(DEFAULT_TIME_VALUE, TimeUnit.SECONDS)
+        writeTimeout(DEFAULT_TIME_VALUE, TimeUnit.SECONDS)
+        connectTimeout(DEFAULT_TIME_VALUE, TimeUnit.SECONDS)
+    }
+
+    private fun OkHttpClient.Builder.setupCache() = apply {
+        cache(cache)
     }
 }

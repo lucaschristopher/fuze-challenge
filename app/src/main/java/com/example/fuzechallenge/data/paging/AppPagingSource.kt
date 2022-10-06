@@ -5,26 +5,23 @@ import androidx.paging.PagingState
 import com.example.fuzechallenge.core.constants.INITIAL_PAGE
 import com.example.fuzechallenge.core.constants.PAGE_SIZE
 import com.example.fuzechallenge.core.constants.SORT_PARAM
-import com.example.fuzechallenge.data.model.toDomainModel
+import com.example.fuzechallenge.data.model.MatchResponse
 import com.example.fuzechallenge.data.service.AppService
-import com.example.fuzechallenge.domain.model.Match
 
 class AppPagingSource(
     private val service: AppService
-) : PagingSource<Int, Match>() {
+) : PagingSource<Int, MatchResponse>() {
 
-    override fun getRefreshKey(state: PagingState<Int, Match>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, MatchResponse>): Int? {
         return state.anchorPosition
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Match> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MatchResponse> {
         return try {
             val nextPage = params.key ?: INITIAL_PAGE
             val matchList = service.getMatches(nextPage, PAGE_SIZE, SORT_PARAM)
             LoadResult.Page(
-                data = matchList.map {
-                    it.toDomainModel()
-                },
+                data = matchList,
                 prevKey = params.key,
                 nextKey = params.key?.plus(ONE) ?: STARTING_PAGE_INDEX.plus(ONE)
             )

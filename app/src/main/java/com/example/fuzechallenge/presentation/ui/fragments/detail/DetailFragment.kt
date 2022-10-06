@@ -1,119 +1,60 @@
 package com.example.fuzechallenge.presentation.ui.fragments.detail
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.navigation.NavController
+import androidx.compose.ui.text.font.FontWeight
 import com.example.fuzechallenge.R
-import com.example.fuzechallenge.core.constants.FULL_OPPONENTS_QUANTITY
 import com.example.fuzechallenge.presentation.model.MatchUiModel
-import com.example.fuzechallenge.presentation.state.ViewState
-import com.example.fuzechallenge.presentation.theme.*
-import com.example.fuzechallenge.presentation.ui.components.core.LoadingComponent
-import com.example.fuzechallenge.presentation.ui.components.detail.DetailTopBar
-import com.example.fuzechallenge.presentation.ui.components.detail.MatchTime
-import com.example.fuzechallenge.presentation.ui.components.detail.TeamList
-import com.example.fuzechallenge.presentation.ui.components.home.RowTeamImages
+import com.example.fuzechallenge.presentation.theme.BlackFuze
+import com.example.fuzechallenge.presentation.ui.components.core.AppTopBar
 import com.example.fuzechallenge.presentation.viewmodel.DetailViewModel
 import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun DetailFragment(
+    navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    navController: NavController,
     match: MatchUiModel?
 ) {
     val viewModel = getViewModel<DetailViewModel>()
+    fun getGangs() = viewModel.getTeamsInfo(match?.opponents)
 
-    fun setupData() {
-        match?.let {
-            viewModel.hasOpponents = match.opponents.isNotEmpty()
-            viewModel.hasFullOpponents = match.opponents.size == FULL_OPPONENTS_QUANTITY
-        }
-    }
-
-    fun validateCalls() {
-        if (viewModel.hasOpponents && viewModel.hasFullOpponents) {
-            match?.opponents?.first()?.opponent?.id?.let { viewModel.getFirstGangDetail(it.toString()) }
-            match?.opponents?.last()?.opponent?.id?.let { viewModel.getSecondGangDetail(it.toString()) }
-        } else if (viewModel.hasOpponents && !viewModel.hasFullOpponents) {
-            match?.opponents?.first()?.opponent?.id?.let { viewModel.getFirstGangDetail(it.toString()) }
-        }
-    }
-
-    fun launch() {
-        setupData()
-        validateCalls()
-    }
-
-    launch()
+    getGangs()
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
         backgroundColor = BlackFuze,
         topBar = {
-            DetailTopBar(
-                navController = navController,
-                serieName = match?.serie?.name ?: stringResource(id = R.string.default_serie_label),
-                leagueName = match?.league?.name
-                    ?: stringResource(id = R.string.default_league_label)
-            )
-        },
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(top = dp4, bottom = dp16),
-        ) {
-            match?.let { it ->
-                RowTeamImages(match = it)
-                MatchTime(it)
-                if (viewModel.hasFullOpponents) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        BuildFirstTeamPlayerList(viewModel)
-                        BuildSecondTeamPlayerList(viewModel)
-                    }
-                } else if (viewModel.hasOpponents && !viewModel.hasFullOpponents) {
-                    BuildFirstTeamPlayerList(viewModel)
-                } else {
+            val serieName = match?.serie?.name ?: stringResource(id = R.string.default_serie_label)
+            val leagueName = match?.league?.name
+                ?: stringResource(id = R.string.default_league_label)
+
+            AppTopBar(
+                navigateBack = navigateBack,
+                showBackButton = true,
+                title = {
                     Text(
-                        modifier = Modifier.padding(vertical = dp24),
-                        text = stringResource(id = R.string.no_teams_label),
-                        fontSize = sp14,
+                        text = "$serieName / $leagueName",
                         color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        modifier = modifier.fillMaxWidth(),
+                        style = MaterialTheme.typography.subtitle1
                     )
                 }
-            }
+            )
+        },
+        content = {
+            DetailContent(
+                match = match,
+                viewModel = viewModel
+            )
         }
-    }
-}
-
-@Composable
-private fun BuildFirstTeamPlayerList(viewModel: DetailViewModel) {
-    when (val state = viewModel.firstGangDetail.collectAsState().value) {
-        is ViewState.Loading -> LoadingComponent()
-        is ViewState.Success -> TeamList(state.data, true)
-        is ViewState.Error -> Unit
-        else -> Unit
-    }
-}
-
-@Composable
-private fun BuildSecondTeamPlayerList(viewModel: DetailViewModel) {
-    when (val state = viewModel.secondGangDetail.collectAsState().value) {
-        is ViewState.Loading -> LoadingComponent()
-        is ViewState.Success -> TeamList(state.data, false)
-        is ViewState.Error -> Unit
-        else -> Unit
-    }
+    )
 }

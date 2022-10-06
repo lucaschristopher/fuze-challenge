@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface AppRepository {
     fun getMatches(): Flow<PagingData<Match>>
-    suspend fun getGangById(id: String): Flow<Gang>
+    suspend fun getTeamsInfo(teamsId: List<Long>): Flow<List<Gang>>
 }

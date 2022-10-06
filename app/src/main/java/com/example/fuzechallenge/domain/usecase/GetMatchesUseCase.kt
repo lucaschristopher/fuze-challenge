@@ -5,8 +5,11 @@ import com.example.fuzechallenge.data.repository.AppRepository
 import com.example.fuzechallenge.domain.model.Match
 import kotlinx.coroutines.flow.Flow
 
-class GetMatchesUseCase(private val repository: AppRepository) {
-    operator fun invoke(): Flow<PagingData<Match>> {
+class GetMatchesUseCase(
+    private val repository: AppRepository
+) : UseCase.NoParam<PagingData<Match>>() {
+
+    override suspend fun execute(): Flow<PagingData<Match>> {
         return this.repository.getMatches()
     }
 }

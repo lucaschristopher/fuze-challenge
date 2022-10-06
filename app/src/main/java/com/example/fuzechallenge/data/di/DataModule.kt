@@ -22,22 +22,22 @@ import org.koin.dsl.module
 import retrofit2.Converter
 import retrofit2.converter.gson.GsonConverterFactory
 
+val apiModule = module {
+    factory { ApiFactory.build(retrofit = get(), apiClass = AppService::class.java) }
+}
+
 val networkModule = module {
-    single {
+    factory {
         OkHttpClientFactory.build()
     }
 
-    single<Converter.Factory> {
+    factory<Converter.Factory> {
         GsonConverterFactory.create(GsonBuilder().create())
     }
 
-    single {
+    factory {
         RetrofitFactory.build(url = BuildConfig.BASE_URL, client = get(), factory = get())
     }
-}
-
-val apiModule = module {
-    factory { ApiFactory.build(retrofit = get(), apiClass = AppService::class.java) }
 }
 
 val repositoryModule = module {

@@ -12,9 +12,9 @@ import com.example.fuzechallenge.presentation.theme.dp24
 import com.example.fuzechallenge.presentation.theme.sp14
 
 @Composable
-fun MatchTime(it: MatchUiModel) {
+fun MatchTime(it: MatchUiModel, modifier: Modifier = Modifier) {
     Text(
-        modifier = Modifier.padding(vertical = dp24),
+        modifier = modifier.padding(vertical = dp24),
         text = formatTime(it.status, it.scheduledAt) ?: NO_TIME,
         fontSize = sp14,
         color = Color.White,

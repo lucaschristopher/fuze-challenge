@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import com.example.fuzechallenge.R
 import com.example.fuzechallenge.presentation.model.MatchUiModel
 import com.example.fuzechallenge.presentation.theme.*
+import com.example.fuzechallenge.presentation.ui.components.core.LogoImage
 
 @Composable
 fun RowMatchInfo(match: MatchUiModel, modifier: Modifier = Modifier) {
@@ -23,9 +24,12 @@ fun RowMatchInfo(match: MatchUiModel, modifier: Modifier = Modifier) {
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        LogoImage(imageUrl = match.league.imageUrl, sizeImage = dp18)
+        LogoImage(
+            imageUrl = match.league.imageUrl,
+            sizeImage = dp18
+        )
         Text(
-            modifier = Modifier.padding(start = dp10),
+            modifier = modifier.padding(start = dp10),
             text = stringResource(
                 R.string.match_info,
                 getValidLeagueName(match.league.name),
