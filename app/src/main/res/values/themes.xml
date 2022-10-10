@@ -3,5 +3,6 @@
 
     <style name="Theme.FuzeChallenge" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/black_fuze</item>
+        <item name="android:windowBackground">@color/black_fuze</item>
     </style>
 </resources>

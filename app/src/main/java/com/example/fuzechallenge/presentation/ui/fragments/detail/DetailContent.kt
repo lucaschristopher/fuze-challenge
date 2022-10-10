@@ -1,5 +1,6 @@
 package com.example.fuzechallenge.presentation.ui.fragments.detail
 
+import android.content.pm.ActivityInfo
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -15,6 +16,7 @@ import com.example.fuzechallenge.presentation.ui.components.detail.FirstTeamList
 import com.example.fuzechallenge.presentation.ui.components.detail.MatchTime
 import com.example.fuzechallenge.presentation.ui.components.detail.SecondTeamList
 import com.example.fuzechallenge.presentation.ui.components.home.RowTeamImages
+import com.example.fuzechallenge.presentation.ui.util.LockScreenOrientation
 import com.example.fuzechallenge.presentation.viewmodel.DetailViewModel
 
 @Composable
@@ -22,6 +24,7 @@ fun DetailContent(
     match: MatchUiModel?,
     viewModel: DetailViewModel
 ) {
+    LockScreenOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier

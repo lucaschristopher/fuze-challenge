@@ -9,15 +9,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.example.fuzechallenge.core.constants.END_FRACTION_GUIDELINE
-import com.example.fuzechallenge.core.constants.TEXT_MAX_SIZE
 import com.example.fuzechallenge.core.util.mockPlayerPreview
 import com.example.fuzechallenge.presentation.model.detail.GangUiModel
 import com.example.fuzechallenge.presentation.model.detail.PlayerUiModel
-import com.example.fuzechallenge.presentation.theme.FuzeChallengeTheme
-import com.example.fuzechallenge.presentation.theme.dp2
-import com.example.fuzechallenge.presentation.theme.dp4
-import com.example.fuzechallenge.presentation.theme.dp8
+import com.example.fuzechallenge.presentation.theme.*
 import com.example.fuzechallenge.presentation.ui.components.core.PlayerCard
 
 @Composable
@@ -44,12 +39,12 @@ fun BodyFirstCardPlayer(player: PlayerUiModel, modifier: Modifier = Modifier) {
             .padding(dp2)
     ) {
         val (nickname, name) = createRefs()
-        val endGuideline = createGuidelineFromEnd(END_FRACTION_GUIDELINE)
+        val endGuideline = createGuidelineFromEnd(af04)
 
         PlayerNickName(
             nickName = player.slug,
             modifier = modifier
-                .fillMaxWidth(TEXT_MAX_SIZE)
+                .fillMaxWidth(af04)
                 .padding(top = dp8, start = dp8, end = dp8)
                 .constrainAs(nickname) {
                     top.linkTo(parent.top)
@@ -61,7 +56,7 @@ fun BodyFirstCardPlayer(player: PlayerUiModel, modifier: Modifier = Modifier) {
         PlayerName(
             playerName = player.firstName,
             modifier = modifier
-                .fillMaxWidth(TEXT_MAX_SIZE)
+                .fillMaxWidth(af04)
                 .padding(top = dp4, start = dp8, end = dp8)
                 .constrainAs(name) {
                     top.linkTo(nickname.bottom)

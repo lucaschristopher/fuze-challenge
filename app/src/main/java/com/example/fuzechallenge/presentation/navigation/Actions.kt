@@ -10,10 +10,14 @@ class Actions(navHostController: NavHostController) {
         navHostController.navigateUp()
     }
 
+    val goToHome: () -> Unit = {
+        navHostController.navigate(Route.Home.route) {
+            navHostController.popBackStack()
+        }
+    }
+
     val openMatchDetail: (MatchUiModel) -> Unit = { match ->
         navHostController.currentBackStackEntry?.savedStateHandle?.set(ARG_MATCH, match)
-        navHostController.navigate(
-            Route.Detail.route
-        )
+        navHostController.navigate(Route.Detail.route)
     }
 }

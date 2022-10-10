@@ -1,0 +1,76 @@
+{
+  "acronym": null,
+  "current_videogame": {
+    "id": 3,
+    "name": "CS:GO",
+    "slug": "cs-go"
+  },
+  "id": 127361,
+  "image_url": "https://cdn.pandascore.co/images/team/image/127361/600px_gtz_esports_full_lightmode.png",
+  "location": "PT",
+  "modified_at": "2022-09-28T15:33:54Z",
+  "name": "GTZ.Esports",
+  "players": [
+    {
+      "age": 20,
+      "birthday": "2001-11-08",
+      "first_name": "Filipe",
+      "id": 24570,
+      "image_url": "https://cdn.pandascore.co/images/player/image/24570/600px_nope_ej_at_liga_portuguesa_spring_2020.png",
+      "last_name": "Dias",
+      "name": "NOPEEJ",
+      "nationality": "PT",
+      "role": null,
+      "slug": "nopeej"
+    },
+    {
+      "age": 20,
+      "birthday": null,
+      "first_name": "Antonio",
+      "id": 28048,
+      "image_url": null,
+      "last_name": "Mota",
+      "name": "Slaxx",
+      "nationality": "PT",
+      "role": null,
+      "slug": "slaxx"
+    },
+    {
+      "age": 21,
+      "birthday": null,
+      "first_name": "Rafael",
+      "id": 28050,
+      "image_url": null,
+      "last_name": "Faria",
+      "name": "rafaxF",
+      "nationality": "PT",
+      "role": null,
+      "slug": "rafaxf"
+    },
+    {
+      "age": 21,
+      "birthday": "2001-09-20",
+      "first_name": "DIOGO ",
+      "id": 29857,
+      "image_url": "https://cdn.pandascore.co/images/player/image/29857/snapy.png",
+      "last_name": "RODRIGUES",
+      "name": "snapy",
+      "nationality": "PT",
+      "role": null,
+      "slug": "snapy"
+    },
+    {
+      "age": 21,
+      "birthday": null,
+      "first_name": "José",
+      "id": 33949,
+      "image_url": null,
+      "last_name": "Duro",
+      "name": "Linko",
+      "nationality": "PT",
+      "role": null,
+      "slug": "linko"
+    }
+  ],
+  "slug": "gtz-bulls-esports"
+}

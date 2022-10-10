@@ -44,5 +44,12 @@ val sp22 = 22.sp
 val sp24 = 24.sp
 val sp32 = 32.sp
 
-// Alpha
+// Alpha and Fractions
+const val af0 = 0f
 const val af02 = 0.2f
+const val af03 = 0.3f
+const val af04 = 0.4f
+const val af05 = 0.5f
+const val af06 = 0.6f
+const val af1 = 1f
+const val af2 = 2f

@@ -3,6 +3,7 @@ package com.example.fuzechallenge.data.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.fuzechallenge.core.constants.INITIAL_PAGE
+import com.example.fuzechallenge.core.constants.ONE
 import com.example.fuzechallenge.core.constants.PAGE_SIZE
 import com.example.fuzechallenge.core.constants.SORT_PARAM
 import com.example.fuzechallenge.data.model.MatchResponse
@@ -32,6 +33,5 @@ class AppPagingSource(
 
     companion object {
         private const val STARTING_PAGE_INDEX = INITIAL_PAGE
-        const val ONE = 1
     }
 }

@@ -9,6 +9,7 @@ import com.example.fuzechallenge.core.constants.ARG_MATCH
 import com.example.fuzechallenge.presentation.model.MatchUiModel
 import com.example.fuzechallenge.presentation.ui.fragments.detail.DetailFragment
 import com.example.fuzechallenge.presentation.ui.fragments.home.HomeFragment
+import com.example.fuzechallenge.presentation.ui.fragments.splash.SplashFragment
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -16,8 +17,13 @@ fun NavGraph(navController: NavHostController) {
 
     NavHost(
         navController = navController,
-        startDestination = Route.Home.route
+        startDestination = Route.Splash.route
     ) {
+        composable(route = Route.Splash.route) {
+            SplashFragment(
+                goToHome = actions.goToHome
+            )
+        }
         composable(route = Route.Home.route) {
             HomeFragment(
                 openMatchDetail = actions.openMatchDetail

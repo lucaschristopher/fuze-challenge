@@ -8,6 +8,7 @@
     <string name="today_time">Hoje, %sh</string>
     <string name="scheduled_time">%sh</string>
 
+    <string name="fuze_logo_description">image logo</string>
     <string name="team_image_description">team image</string>
     <string name="league_image_description">league image</string>
     <string name="player_image_description">player image</string>

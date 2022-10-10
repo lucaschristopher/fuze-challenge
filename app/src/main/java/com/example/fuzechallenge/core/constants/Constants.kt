@@ -7,6 +7,7 @@ const val IO_DISPATCHER = "IODispatcher"
 const val DEFAULT_DISPATCHER = "DefaultDispatcher"
 
 // Screens
+const val SPLASH_SCREEN = "splash"
 const val HOME_SCREEN = "home"
 const val DETAIL_SCREEN = "detail"
 const val ARG_MATCH = "match"
@@ -23,19 +24,28 @@ const val ZONE_ID = "Brazil/East"
 const val ZONE_OFFSET = -3
 const val LANGUAGE = "pt"
 const val COUNTRY = "pt-Br"
-const val DEFAULT_TIME_VALUE: Long = 60
 
-const val INITIAL_PAGE: Int = 1
-const val PAGE_SIZE: Int = 20
+// Long
 const val DEFAULT_ID: Long = 0
+const val DEFAULT_TIME_VALUE: Long = 60
+const val ANIMATION_DURATION: Long = 3000L
+
+// Int
+const val ONE: Int = 1
+const val TWO: Int = 2
+const val INITIAL_PAGE: Int = 1
+const val INITIAL_INDEX: Int = 0
+const val PAGE_SIZE: Int = 20
 const val FULL_OPPONENTS_QUANTITY: Int = 2
 const val UNIQUE_OPPONENTS_QUANTITY: Int = 1
 const val MAX_LINES: Int = 1
 const val CANVA_DIVISOR: Int = 2
 const val SIZE_TO_ELLIPSIS: Int = 12
-const val END_FRACTION_GUIDELINE = 0.4f
-const val START_FRACTION_GUIDELINE = 0.6f
-const val TEXT_MAX_SIZE = 0.6f
+const val SPLASH_LOGO_DURATION: Int = 500
+const val TEST_NEXT_PAGE = 2
 
 // Interceptor
 const val AUTHORIZATION = "Authorization"
+
+// Test tags
+const val APP_TOP_BAR_COMPONENT = "APP_TOP_BAR_COMPONENT"
