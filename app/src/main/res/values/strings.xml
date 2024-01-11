@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Fuze Challenge</string>
+    <string name="main_title">Partidas</string>
+    <string name="error_dialog_title">Ocorreu um erro</string>
+    <string name="error_dialog_default_description">Ocorreu um problema ao buscar as partidas. Por favor, tente novamente.</string>
+    <string name="error_toast_message">Ops! Erro ao buscar novas partidas.</string>
+    <string name="now_label">Agora</string>
+    <string name="today_time">Hoje, %sh</string>
+    <string name="scheduled_time">%sh</string>
+
+    <string name="fuze_logo_description">image logo</string>
+    <string name="team_image_description">team image</string>
+    <string name="league_image_description">league image</string>
+    <string name="player_image_description">player image</string>
+    <string name="back_button_description">back button</string>
+
+    <string name="reload_label">Recarregar</string>
+    <string name="no_teams_label">Nenhum time aqui =S</string>
+    <string name="vs_label">VS</string>
+    <string name="default_team_label">Team ?</string>
+    <string name="default_serie_label">Serie ?</string>
+    <string name="default_league_label">League ?</string>
+    <string name="match_info">%s / %s</string>
+</resources>
