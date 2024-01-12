@@ -9,10 +9,8 @@ import com.example.fuzechallenge.presentation.commons.navigation.routes.Routes
 internal fun NavigationGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = Routes.Splash.route
+        startDestination = Routes.Home.route
     ) {
-
-        splashScreen(navController = navController)
 
         listScreen(navController = navController)
 

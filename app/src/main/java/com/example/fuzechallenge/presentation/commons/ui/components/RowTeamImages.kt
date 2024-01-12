@@ -15,6 +15,7 @@ import com.example.fuzechallenge.presentation.commons.ui.theme.Gray
 import com.example.fuzechallenge.presentation.commons.ui.theme.dp16
 import com.example.fuzechallenge.presentation.commons.ui.theme.dp40
 import com.example.fuzechallenge.presentation.commons.ui.theme.sp12
+import com.example.fuzechallenge.presentation.detail.ui.components.TeamCrest
 import com.example.fuzechallenge.presentation.list.model.OpponentUIModel
 
 @Composable

@@ -51,7 +51,7 @@ internal fun MatchDetailScreen(
                         color = Color.White,
                         fontWeight = FontWeight.Bold,
                         modifier = modifier.fillMaxWidth(),
-                        style = MaterialTheme.typography.titleSmall
+                        style = MaterialTheme.typography.headlineSmall
                     )
                 }
             )

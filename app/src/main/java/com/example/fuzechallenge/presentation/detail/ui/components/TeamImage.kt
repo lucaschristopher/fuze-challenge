@@ -1,4 +1,4 @@
-package com.example.fuzechallenge.presentation.commons.ui.components
+package com.example.fuzechallenge.presentation.detail.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.height
@@ -14,6 +14,8 @@ import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
 import com.example.fuzechallenge.R
+import com.example.fuzechallenge.presentation.commons.ui.components.EmptyPlayerLogo
+import com.example.fuzechallenge.presentation.commons.ui.components.LoadingComponent
 import com.example.fuzechallenge.presentation.commons.ui.theme.dp10
 import com.example.fuzechallenge.presentation.commons.ui.theme.dp16
 import com.example.fuzechallenge.presentation.commons.ui.theme.dp60

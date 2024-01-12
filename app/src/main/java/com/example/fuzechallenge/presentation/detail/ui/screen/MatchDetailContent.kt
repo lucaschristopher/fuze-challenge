@@ -10,10 +10,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.example.fuzechallenge.presentation.commons.ui.components.FirstTeamList
+import com.example.fuzechallenge.presentation.detail.ui.components.FirstTeamList
 import com.example.fuzechallenge.presentation.commons.ui.components.MatchTime
 import com.example.fuzechallenge.presentation.commons.ui.components.RowTeamImages
-import com.example.fuzechallenge.presentation.commons.ui.components.SecondTeamList
+import com.example.fuzechallenge.presentation.detail.ui.components.SecondTeamList
 import com.example.fuzechallenge.presentation.commons.ui.theme.dp16
 import com.example.fuzechallenge.presentation.commons.ui.theme.dp4
 import com.example.fuzechallenge.presentation.commons.utils.extensions.LockScreenOrientation

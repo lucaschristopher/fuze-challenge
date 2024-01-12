@@ -1,4 +1,4 @@
-package com.example.fuzechallenge.presentation.commons.ui.components
+package com.example.fuzechallenge.presentation.detail.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -7,6 +7,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.example.fuzechallenge.presentation.commons.ui.components.PlayerName
+import com.example.fuzechallenge.presentation.commons.ui.components.PlayerNickName
 import com.example.fuzechallenge.presentation.commons.ui.theme.FuzeChallengeTheme
 import com.example.fuzechallenge.presentation.commons.ui.theme.af04
 import com.example.fuzechallenge.presentation.commons.ui.theme.dp2

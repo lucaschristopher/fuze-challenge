@@ -1,6 +1,5 @@
 package com.example.fuzechallenge.presentation.commons.ui.components
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -15,7 +14,6 @@ import androidx.compose.ui.res.stringResource
 import com.example.fuzechallenge.R
 import com.example.fuzechallenge.presentation.commons.ui.theme.BlackFuze
 import com.example.fuzechallenge.presentation.commons.ui.theme.Gray
-import com.example.fuzechallenge.presentation.commons.ui.theme.dp16
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -26,7 +24,7 @@ internal fun AppTopBar(
     navigateBack: () -> Unit = {}
 ) {
     TopAppBar(
-        modifier = modifier.padding(dp16),
+        modifier = modifier,
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = BlackFuze,
             titleContentColor = Gray,

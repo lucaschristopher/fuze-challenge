@@ -16,6 +16,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.fuzechallenge.R
 import com.example.fuzechallenge.presentation.commons.ui.components.AppTopBar
 import com.example.fuzechallenge.presentation.commons.ui.theme.BlackFuze
+import com.example.fuzechallenge.presentation.commons.ui.theme.dp10
 import com.example.fuzechallenge.presentation.list.model.MatchUIModel
 import com.example.fuzechallenge.presentation.list.viewmodel.MatchListViewModel
 
@@ -37,7 +38,9 @@ internal fun MatchListScreen(
                         text = stringResource(id = R.string.main_title),
                         color = Color.White,
                         fontWeight = FontWeight.Bold,
-                        modifier = modifier.fillMaxWidth(),
+                        modifier = modifier
+                            .fillMaxWidth()
+                            .padding(start = dp10),
                         style = MaterialTheme.typography.headlineMedium
                     )
                 }

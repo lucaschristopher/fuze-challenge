@@ -12,6 +12,7 @@ import com.example.fuzechallenge.presentation.commons.ui.components.ErrorDialog
 import com.example.fuzechallenge.presentation.commons.ui.components.LoadingComponent
 import com.example.fuzechallenge.presentation.commons.ui.components.LoadingItem
 import com.example.fuzechallenge.presentation.commons.ui.theme.dp16
+import com.example.fuzechallenge.presentation.commons.ui.theme.dp4
 import com.example.fuzechallenge.presentation.commons.utils.extensions.showErrorToast
 import com.example.fuzechallenge.presentation.list.model.MatchUIModel
 import com.example.fuzechallenge.presentation.list.ui.components.MatchCard
@@ -27,7 +28,12 @@ internal fun MatchListContent(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .padding(all = dp16),
+            .padding(
+                start = dp16,
+                end = dp16,
+                bottom = dp16,
+                top = dp4
+            ),
     ) {
         items(count = matches.itemCount) { index ->
             val item = matches[index]
@@ -39,13 +45,13 @@ internal fun MatchListContent(
             }
         }
 
-        when (matches.loadState.append) { // FIXME
+        when (matches.loadState.append) {
             is LoadState.NotLoading -> Unit
             LoadState.Loading -> {
                 item { LoadingItem() }
             }
 
-            is LoadState.Error -> context.showErrorToast()
+            is LoadState.Error -> context.showErrorToast()  // FIXME
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.fuzechallenge.presentation.commons.ui.components
+package com.example.fuzechallenge.presentation.detail.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,6 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.example.fuzechallenge.R
+import com.example.fuzechallenge.presentation.commons.ui.components.EmptyTeamLogo
+import com.example.fuzechallenge.presentation.commons.ui.components.LogoImage
 import com.example.fuzechallenge.presentation.commons.ui.theme.Gray
 import com.example.fuzechallenge.presentation.commons.ui.theme.dp10
 import com.example.fuzechallenge.presentation.commons.ui.theme.dp60

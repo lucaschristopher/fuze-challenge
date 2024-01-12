@@ -5,4 +5,10 @@
         <item name="android:statusBarColor">@color/black_fuze</item>
         <item name="android:windowBackground">@color/black_fuze</item>
     </style>
+
+    <style name="Theme.FuzeChallenge.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/black_fuze</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_fuze</item>
+        <item name="postSplashScreenTheme">@style/Theme.FuzeChallenge</item>
+    </style>
 </resources>

@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-internal class MatchDetailsViewModel @Inject constructor( // FIXME
+internal class MatchDetailsViewModel @Inject constructor(
     private val getMatchByIdUseCase: GetMatchByIdUseCase,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {

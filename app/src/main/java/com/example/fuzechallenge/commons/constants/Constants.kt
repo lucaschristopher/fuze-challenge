@@ -30,7 +30,6 @@ internal object Constants {
     const val MAX_LINES: Int = 1
     const val CANVA_DIVISOR: Int = 2
     const val SIZE_TO_ELLIPSIS: Int = 12
-    const val SPLASH_LOGO_DURATION: Int = 500
     const val TEST_NEXT_PAGE = 2
 
     // Interceptor

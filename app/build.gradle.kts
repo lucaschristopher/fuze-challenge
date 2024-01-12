@@ -88,8 +88,11 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.activity.compose)
-    implementation(libs.navigation)
+    implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.constraintlayout.compose)
+    implementation(libs.navigation)
+
+
 
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
@@ -108,6 +111,9 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
 
     testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.core.testing)
 }
 
 // Allow references to generated code
