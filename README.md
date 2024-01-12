@@ -48,7 +48,7 @@ To clone the project, run the command
 ```
 git clone (by SSH or HTTPS)
 ```
-After cloning the project in the *master* branch, obtain a valid token from the PandasCore API, go to the build.gradle file (module :app) and paste your key into the API_KEY variables of the debug and release flavor (don't forget to remove the keys):
+After cloning the project in the *master* branch, obtain a valid token from the [PandasCore API](https://developers.pandascore.co/reference), go to the build.gradle file (module :app) and paste your key into the API_KEY variables of the debug and release flavor (don't forget to remove the keys):
 ```
 buildTypes {
         debug {
