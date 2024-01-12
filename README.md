@@ -41,6 +41,53 @@ Each layer of MVVM using Clean Architecture in Android and the codes are divided
 
 This was the approach adopted in the solution. Thank you in advance.
 
+## How to execute the project 
+
+To clone the project, run the command
+
+```
+git clone (by SSH or HTTPS)
+```
+After cloning the project in the *master* branch, obtain a valid token from the PandasCore API, go to the build.gradle file (module :app) and paste your key into the API_KEY variables of the debug and release flavor (don't forget to remove the keys):
+```
+buildTypes {
+        debug {
+            // ...
+
+            buildConfigField(
+                type = "String",
+                name = "API_KEY",
+                value = "\"{PASTE_YOUR_TOKEN_HERE}\""
+            )
+
+           // ...
+        }
+
+        release {
+            // ...
+
+            buildConfigField(
+                type = "String",
+                name = "API_KEY",
+                value = "\"{PASTE_YOUR_TOKEN_HERE}\""
+            )
+
+           // ...
+        }
+    }
+```
+
+After that, sync the project and run the app module on an emulator or physical device. You should see the app working like the images below.
+
+![Captura de tela 2024-01-12 101143](https://github.com/lucaschristopher/fuze-challenge/assets/20783887/e3670c66-666f-4b80-b4fd-0d93928e626d)
+![Captura de tela 2024-01-12 101212](https://github.com/lucaschristopher/fuze-challenge/assets/20783887/d2322a86-428c-4a64-8f74-293b406ed368)
+![Captura de tela 2024-01-12 101105](https://github.com/lucaschristopher/fuze-challenge/assets/20783887/ea6e27f5-44ba-433c-9aaa-e165542f4128)
+![image](https://github.com/lucaschristopher/fuze-challenge/assets/20783887/07e7b142-d754-4f69-895f-da152c6d4242)
+
+
+
+
+
 **Autor: Lucas Christopher.**
 
 ##### _All honor and all glory, everything comes from him and everything is for him: JESUS!_
