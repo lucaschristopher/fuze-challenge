@@ -14,7 +14,7 @@ import java.time.ZoneOffset
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
-internal class TimeUtils { // FIXME
+internal class TimeUtils {
 
     companion object {
 
@@ -54,7 +54,11 @@ internal class TimeUtils { // FIXME
             }
         }
 
-        fun getCurrentTime() = SimpleDateFormat(DATE_COMPLEX_PATTERN).toString()
+        private fun getCurrentTime() =
+            SimpleDateFormat(
+                DATE_COMPLEX_PATTERN,
+                java.util.Locale("PT", "br")
+            ).toString()
     }
 
 }

@@ -20,4 +20,5 @@
     <string name="default_serie_label">Serie UND</string>
     <string name="default_league_label">League UND</string>
     <string name="match_info">%s | %s</string>
+    <string name="error_message">Error: %s</string>
 </resources>

@@ -10,11 +10,15 @@ import androidx.compose.ui.platform.LocalContext
 import com.example.fuzechallenge.R
 
 internal fun Context.showErrorToast() {
-    Toast.makeText(this, R.string.error_toast_message, Toast.LENGTH_LONG).show()
+    Toast.makeText(
+        this,
+        R.string.error_toast_message,
+        Toast.LENGTH_LONG
+    ).show()
 }
 
 @Composable
-internal fun LockScreenOrientation(orientation: Int) { // FIXME
+internal fun LockScreenOrientation(orientation: Int) {
     val context = LocalContext.current
     DisposableEffect(Unit) {
         val activity = context.findActivity() ?: return@DisposableEffect onDispose {}

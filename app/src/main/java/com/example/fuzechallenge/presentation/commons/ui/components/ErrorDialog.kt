@@ -22,6 +22,7 @@ internal fun ErrorDialog(
 
     if (openDialog.value) {
         AlertDialog(
+            modifier = modifier,
             onDismissRequest = {
                 openDialog.value = false
             },

@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.paging.LoadState
@@ -25,6 +26,20 @@ internal fun MatchListContent(
 ) {
     val context = LocalContext.current
 
+    /**
+     * LoadType is an Enum and it has 3 type
+     *
+     * APPEND : used to load at the end of a PagingData
+     * PREPEND : used load at the start of a PagingData
+     * REFRESH : used to refresh or initial load of a PagingData
+     */
+
+    LaunchedEffect(matches.loadState) {
+        if (matches.loadState.append is LoadState.Error) {
+            context.showErrorToast()
+        }
+    }
+
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
@@ -45,24 +60,20 @@ internal fun MatchListContent(
             }
         }
 
-        when (matches.loadState.append) {
-            is LoadState.NotLoading -> Unit
-            LoadState.Loading -> {
-                item { LoadingItem() }
+        item {
+            if (matches.loadState.append is LoadState.Loading) {
+                LoadingItem()
             }
-
-            is LoadState.Error -> context.showErrorToast()  // FIXME
         }
     }
 
-    matches.apply {
-        when (loadState.refresh) {
-            is LoadState.Loading -> LoadingComponent()
-            is LoadState.Error -> ErrorDialog(
-                onClick = { retry() }
-            )
+    when (matches.loadState.refresh) {
+        is LoadState.Loading -> LoadingComponent()
+        is LoadState.Error -> ErrorDialog(
+            modifier = modifier,
+            onClick = { matches.retry() }
+        )
 
-            else -> Unit
-        }
+        else -> Unit
     }
 }
