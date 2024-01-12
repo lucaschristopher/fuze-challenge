@@ -2,7 +2,7 @@ package com.example.fuzechallenge.data.model
 
 import com.google.gson.annotations.SerializedName
 
-class OpponentResponse(
+internal class OpponentResponse(
     @SerializedName("opponent")
     val opponent: TeamResponse?,
     @SerializedName("type")

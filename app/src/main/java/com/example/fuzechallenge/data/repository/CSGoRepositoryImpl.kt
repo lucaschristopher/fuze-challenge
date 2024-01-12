@@ -4,7 +4,6 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.example.fuzechallenge.data.datasource.remote.CSGoDataSource
 import com.example.fuzechallenge.data.mapper.toDomain
-import com.example.fuzechallenge.domain.model.Gang
 import com.example.fuzechallenge.domain.model.Match
 import com.example.fuzechallenge.domain.repository.CSGoRepository
 import kotlinx.coroutines.CoroutineDispatcher
@@ -24,9 +23,9 @@ internal class CSGoRepositoryImpl @Inject constructor(
         }
     }.flowOn(dispatcher)
 
-    override suspend fun getTeamsDetails(teamsId: List<Long>): Flow<List<Gang>> = flow {
-        remoteDataSource.getTeamsDetails(teamsId).collect { result ->
-            emit(result.map { it.toDomain() })
+    override suspend fun getMatchById(matchId: String): Flow<Match> = flow {
+        remoteDataSource.getMatchById(matchId).collect { result ->
+            emit(result.toDomain())
         }
     }.flowOn(dispatcher)
 }

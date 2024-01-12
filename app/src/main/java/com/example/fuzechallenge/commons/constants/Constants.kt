@@ -1,6 +1,6 @@
 package com.example.fuzechallenge.commons.constants
 
-object Constants {
+internal object Constants {
 
     // Utils
     const val EMPTY_STRING = ""
@@ -27,7 +27,6 @@ object Constants {
     const val INITIAL_INDEX: Int = 0
     const val PAGE_SIZE: Int = 20
     const val FULL_OPPONENTS_QUANTITY: Int = 2
-    const val UNIQUE_OPPONENTS_QUANTITY: Int = 1
     const val MAX_LINES: Int = 1
     const val CANVA_DIVISOR: Int = 2
     const val SIZE_TO_ELLIPSIS: Int = 12

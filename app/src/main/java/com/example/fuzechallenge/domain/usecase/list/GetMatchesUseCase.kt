@@ -6,8 +6,9 @@ import com.example.fuzechallenge.domain.repository.CSGoRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-internal interface GetMatchesUseCase { // FIXME
+internal interface GetMatchesUseCase {
     suspend operator fun invoke(): Flow<PagingData<Match>>
+
 }
 
 internal class GetMatchesUseCaseImpl @Inject constructor(

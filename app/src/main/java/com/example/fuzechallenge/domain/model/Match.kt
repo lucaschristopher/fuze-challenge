@@ -1,6 +1,6 @@
 package com.example.fuzechallenge.domain.model
 
-class Match(
+internal class Match(
     val id: Long = 0,
     val scheduledAt: String = "",
     val status: String = "",

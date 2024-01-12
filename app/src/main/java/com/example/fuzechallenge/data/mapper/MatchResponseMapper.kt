@@ -5,7 +5,7 @@ import com.example.fuzechallenge.domain.model.League
 import com.example.fuzechallenge.domain.model.Match
 import com.example.fuzechallenge.domain.model.Serie
 
-fun MatchResponse.toDomain() = Match(
+internal fun MatchResponse.toDomain() = Match(
     id = this.id,
     scheduledAt = this.scheduledAt.orEmpty(),
     status = this.status,

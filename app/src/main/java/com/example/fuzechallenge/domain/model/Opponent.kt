@@ -1,6 +1,6 @@
 package com.example.fuzechallenge.domain.model
 
-class Opponent(
+internal class Opponent(
     val opponent: Team,
     val type: String?
 )

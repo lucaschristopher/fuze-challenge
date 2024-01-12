@@ -10,7 +10,6 @@ import com.example.fuzechallenge.data.model.MatchResponse
 import com.example.fuzechallenge.data.service.CSGoService
 import javax.inject.Inject
 
-
 internal class CSGoPagingSource @Inject constructor(
     private val service: CSGoService
 ) : PagingSource<Int, MatchResponse>() {

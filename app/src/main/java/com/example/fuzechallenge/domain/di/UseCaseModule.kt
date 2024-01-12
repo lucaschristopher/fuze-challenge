@@ -2,8 +2,8 @@ package com.example.fuzechallenge.domain.di
 
 import com.example.fuzechallenge.domain.usecase.list.GetMatchesUseCase
 import com.example.fuzechallenge.domain.usecase.list.GetMatchesUseCaseImpl
-import com.example.fuzechallenge.domain.usecase.detail.GetTeamsInfoUseCase
-import com.example.fuzechallenge.domain.usecase.detail.GetTeamsInfoUseCaseImpl
+import com.example.fuzechallenge.domain.usecase.detail.GetMatchByIdUseCase
+import com.example.fuzechallenge.domain.usecase.detail.GetMatchByIdUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -20,6 +20,6 @@ internal interface UseCaseModule {
 
     @Binds
     fun providesGetTeamsInfoUseCase(
-        useCaseImpl: GetTeamsInfoUseCaseImpl
-    ): GetTeamsInfoUseCase
+        useCaseImpl: GetMatchByIdUseCaseImpl
+    ): GetMatchByIdUseCase
 }

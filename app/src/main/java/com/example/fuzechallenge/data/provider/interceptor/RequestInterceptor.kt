@@ -5,7 +5,7 @@ import com.example.fuzechallenge.commons.constants.Constants.AUTHORIZATION
 import okhttp3.Interceptor
 import okhttp3.Response
 
-class RequestInterceptor : Interceptor {
+internal class RequestInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val builder = chain.request().newBuilder().apply {

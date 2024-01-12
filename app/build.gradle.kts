@@ -3,8 +3,9 @@ import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 plugins {
     alias(libs.plugins.android)
     alias(libs.plugins.kotlin)
-    kotlin("kapt")
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
@@ -85,6 +86,7 @@ dependencies {
     implementation(libs.androidx.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.activity.compose)
     implementation(libs.navigation)
     implementation(libs.androidx.constraintlayout.compose)

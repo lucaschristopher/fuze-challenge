@@ -4,7 +4,6 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.fuzechallenge.data.datasource.remote.paging.CSGoPagingSource
-import com.example.fuzechallenge.data.model.GangResponse
 import com.example.fuzechallenge.data.model.MatchResponse
 import com.example.fuzechallenge.data.service.CSGoService
 import kotlinx.coroutines.flow.Flow
@@ -25,19 +24,8 @@ internal class CSGoDataSourceImpl @Inject constructor(
         ).flow
     }
 
-    override suspend fun getGangById(id: String): Flow<GangResponse> = flow {
-        val response = service.getGangById(id)
+    override suspend fun getMatchById(id: String): Flow<MatchResponse> = flow {
+        val response = service.getMatchById(id)
         emit(response)
-    }
-
-    override suspend fun getTeamsDetails(teamsId: List<Long>): Flow<List<GangResponse>> = flow {
-        val teamsInfo = mutableListOf<GangResponse>()
-
-        teamsId.forEach { id ->
-            getGangById(id.toString()).collect { response ->
-                teamsInfo.add(response)
-            }
-        }
-        emit(teamsInfo)
     }
 }

@@ -6,14 +6,13 @@ import com.example.fuzechallenge.data.provider.interceptor.RequestInterceptor
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
-object OkHttpClientFactory {
+internal object OkHttpClientFactory {
 
     fun build(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(RequestInterceptor())
             .addNetworkInterceptor(OnlineInterceptor())
             .setupTimeout()
-            // .setupCache() => FIXME!
             .build()
     }
 

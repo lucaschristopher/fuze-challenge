@@ -2,7 +2,7 @@ package com.example.fuzechallenge.data.model
 
 import com.google.gson.annotations.SerializedName
 
-class MatchResponse(
+internal class MatchResponse(
     @SerializedName("id")
     val id: Long,
     @SerializedName("scheduled_at")

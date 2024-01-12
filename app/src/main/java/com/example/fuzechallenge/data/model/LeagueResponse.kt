@@ -2,7 +2,7 @@ package com.example.fuzechallenge.data.model
 
 import com.google.gson.annotations.SerializedName
 
-class LeagueResponse(
+internal class LeagueResponse(
     @SerializedName("id")
     val id: Long,
     @SerializedName("image_url")

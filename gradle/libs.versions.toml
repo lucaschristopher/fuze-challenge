@@ -15,13 +15,14 @@ paging = "3.2.1"
 
 kotlin = "1.8.10"
 android-application = "8.2.1"
-hilt = "2.44"
+hilt = "2.48"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
 androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayout-compose" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
 androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
+androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle-runtime-ktx" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle-runtime-ktx" }
 navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
@@ -52,5 +53,7 @@ compose = ["ui", "ui-graphics", "ui-tooling", "ui-tooling-preview", "ui-test-man
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize",  version.ref = "kotlin"  }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt",  version.ref = "kotlin"  }
 android = { id = "com.android.application", version.ref = "android-application" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

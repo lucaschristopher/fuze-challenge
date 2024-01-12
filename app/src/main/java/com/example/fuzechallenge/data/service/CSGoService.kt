@@ -1,6 +1,5 @@
 package com.example.fuzechallenge.data.service
 
-import com.example.fuzechallenge.data.model.GangResponse
 import com.example.fuzechallenge.data.model.MatchResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -15,8 +14,8 @@ internal interface CSGoService {
         @Query(SORT) sort: String,
     ): List<MatchResponse>
 
-    @GET("$TEAMS/{$ID}")
-    suspend fun getGangById(@Path(ID) id: String): GangResponse
+    @GET("$MATCHES/{$ID}")
+    suspend fun getMatchById(@Path(ID) id: String): MatchResponse
 
     private companion object {
         const val CSGO = "csgo"
@@ -24,7 +23,6 @@ internal interface CSGoService {
         const val PAGE = "page"
         const val PER_PAGE = "per_page"
         const val SORT = "sort"
-        const val TEAMS = "teams"
         const val ID = "id"
     }
 }
